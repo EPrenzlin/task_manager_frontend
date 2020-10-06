@@ -13,9 +13,30 @@ const submitButton = makeEmployee.querySelector('[type=Submit]');
     }  
     // gives us an array of objects 
     function renderEmployee(jsonObject){
+    const div = document.createElement("div")
+    const button = document.createElement("button")
+    button.innerHTML = "Remove from Team"
+    const h3 = document.createElement("h3")
+    h3.innerHTML  = jsonObject.title
+    div.setAttribute("class", "card")
+    div.setAttribute("data-set", jsonObject.id)
+
+    button.addEventListener("click", (e) => {
+        e.preventDefault()
+        div.remove()
+        return fetch(`${employeeLink}/${jsonObject.id}`,{
+            method:"DELETE"
+        })
+        .then(response => response.json())
+        .then(json => console.log(json))
+    })
+
     let newEmployee = document.createElement("p")
     newEmployee.innerHTML = jsonObject.name
-    mainPage.appendChild(newEmployee)    
+    div.append(newEmployee)
+    div.append(h3) 
+    div.append(button)
+    mainPage.appendChild(div)    
     }
 
     function addEmployee(){
@@ -40,5 +61,4 @@ const submitButton = makeEmployee.querySelector('[type=Submit]');
     
 
 renderAllEmployees()
-// renderEmployee()
 addEmployee() 
