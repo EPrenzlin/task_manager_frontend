@@ -58,7 +58,16 @@ const submitButton = makeEmployee.querySelector('[type=Submit]');
     .then (json => renderEmployee(json)))
     })} 
 
+
+function renderAllTasks(){
+    return fetch(taskLink)
+        .then(response => response.json())
+        .then(obj => console.log(obj))
+    }
+
+
     
 
 renderAllEmployees()
 addEmployee() 
+renderAllTasks()
