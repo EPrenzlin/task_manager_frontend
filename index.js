@@ -62,7 +62,20 @@ const submitButton = makeEmployee.querySelector('[type=Submit]');
 function renderAllTasks(){
     return fetch(taskLink)
         .then(response => response.json())
-        .then(obj => console.log(obj))
+        .then(obj => obj.forEach(task => renderTask(task)))
+    }
+
+    function renderTask(jsonObj){
+    const div = document.createElement("div") 
+    div.setAttribute("data-set", jsonObj.id )
+    const description = document.createElement("p")
+    const urgency = document.createElement("h4")
+    
+    urgency.innerHTML = jsonObj.urgency
+    description.innerHTML = jsonObj.description
+    div.appendChild(description)
+    div.appendChild(urgency)
+    mainPage.append(div)
     }
 
 
