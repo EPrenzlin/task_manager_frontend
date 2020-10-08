@@ -2,6 +2,12 @@ const mainPage = document.querySelector("h2")
 const makeEmployee = document.getElementById("new-employee-form")
 const submitButton = makeEmployee.querySelector('[type=Submit]');
 
+const taskDiv = document.createElement("div")
+mainPage.appendChild(taskDiv)
+
+const employeeDiv = document.createElement("div")
+mainPage.append(employeeDiv) 
+
 
 
 // Employee.renderAllEmployees(); 
@@ -16,6 +22,11 @@ const submitButton = makeEmployee.querySelector('[type=Submit]');
     const div = document.createElement("div")
     const button = document.createElement("button")
     button.innerHTML = "Remove from Team"
+   const newTask = document.createElement("p")
+    newTask.setAttribute("urgency", "urgency")
+    const newDescription = document.createElement("p")
+    newDescription.setAttribute("description", "description")
+    
     const h3 = document.createElement("h3")
     h3.innerHTML  = jsonObject.title
     div.setAttribute("class", "card")
@@ -36,7 +47,7 @@ const submitButton = makeEmployee.querySelector('[type=Submit]');
     div.append(newEmployee)
     div.append(h3) 
     div.append(button)
-    mainPage.appendChild(div)    
+    employeeDiv.appendChild(div)    
     }
 
     function addEmployee(){
@@ -70,13 +81,29 @@ function renderAllTasks(){
     div.setAttribute("data-set", jsonObj.id )
     const description = document.createElement("p")
     const urgency = document.createElement("h4")
+
+    const deleteTask = document.createElement("button") 
+    deleteTask.innerHTML = "Completed Task" 
+
+    deleteTask.addEventListener("click", (e) => {
+        e.preventDefault()
+        div.remove() 
+        return fetch(`${taskLink}/${jsonObj.id}`,{
+            method: "DELETE",
+        })
+        .then(response => response.json())
+        .then(obj => console.log(obj))
+    })
     
     urgency.innerHTML = jsonObj.urgency
     description.innerHTML = jsonObj.description
     div.appendChild(description)
     div.appendChild(urgency)
-    mainPage.append(div)
+    div.appendChild(deleteTask)
+    taskDiv.appendChild(div)
     }
+
+
 
 
     
