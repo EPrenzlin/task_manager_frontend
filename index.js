@@ -46,10 +46,7 @@ mainPage.append(employeeDiv)
         button.addEventListener("click", (e) => {
             e.preventDefault()
             div.remove()
-            return fetch(`${employeeLink}/${jsonObject.id}`,{
-                method:"DELETE"
-            })
-            .then(response => response.json())
+            api.deleteEmployee(jsonObject)
             .then(json => console.log(json))
             })
     // ADDS A TASK
@@ -64,18 +61,7 @@ mainPage.append(employeeDiv)
         
         createTask.addEventListener("click", (e) => {
             e.preventDefault()
-            return fetch(taskLink,{
-                method:"POST",
-                headers:{
-                    'Content-Type' : 'application/json',
-                }, 
-                body: JSON.stringify({
-                    urgency: urgency.value,
-                    description: description.value,
-                    employee_id: jsonObject.id
-                       })
-                })
-            .then(response => response.json())
+            api.addTask(urgency,description,jsonObject)
             .then (obj => renderTask(obj))
             })
     
@@ -97,8 +83,7 @@ mainPage.append(employeeDiv)
 
     // render all tasks
     function renderAllTasks(){
-    return fetch(taskLink)
-        .then(response => response.json())
+    api.allTasks()
         .then(obj => obj.forEach(task => renderTask(task)))
     }
 
@@ -117,10 +102,8 @@ mainPage.append(employeeDiv)
     deleteTask.addEventListener("click", (e) => {
         e.preventDefault()
         div.remove() 
-        return fetch(`${taskLink}/${jsonObj.id}`,{
-            method: "DELETE",
-        })
-        .then(response => response.json())
+
+        api.deleteTask(jsonObj)
         .then(obj => console.log(obj))
     })
     
