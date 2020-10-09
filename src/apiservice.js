@@ -1,8 +1,8 @@
 class ApiService {
 
-    constructor(arg){
-        this.cheese = arg
-    }
+    // constructor(arg){
+    //     this.cheese = arg
+    // }
 
     hello(){
         console.log("hello from API")

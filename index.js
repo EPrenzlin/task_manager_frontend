@@ -9,26 +9,10 @@ mainPage.appendChild(taskDiv)
 
 const employeeDiv = document.createElement("div")
 mainPage.append(employeeDiv) 
-
-
-
-// Employee.renderAllEmployees(); 
-    function renderAllEmployees(){
-        api.allEmployees()
-        .then(json => json.forEach(obj => renderEmployee(obj))) 
-        }        
     
-    function addEmployee(){
-        makeEmployee.addEventListener("submit", (e) => {
-        e.preventDefault()
-        let title = e.target.title.value
-        let name = e.target.name.value
-        let experience = e.target.experience.value
-        let expertise = e.target.expertise.value
 
-        api.addEmployee(title, name, experience, expertise) 
-        .then (json => renderEmployee(json))
-        })}  
+Employee.allEmployees()
+Employee.addEmployee()
 
 
     // render a single employee
@@ -68,24 +52,27 @@ mainPage.append(employeeDiv)
     let description = document.createElement("input")
     description.setAttribute("type", "text") 
     description.setAttribute("placeholder", "Description")
+    
     addTask.appendChild(description)
-
     addTask.append(createTask)
     
     let newEmployee = document.createElement("p")
     newEmployee.innerHTML = jsonObject.name
-    div.append(newEmployee)
+    
     div.append(h3) 
     div.append(button)
     div.append(addTask)
+    console.log(div)
     employeeDiv.appendChild(div)    
     }
 
     // render all tasks
-    function renderAllTasks(){
-    api.allTasks()
-        .then(obj => obj.forEach(task => renderTask(task)))
-    }
+    // function renderAllTasks(){
+    // api.allTasks()
+    //     .then(obj => obj.forEach(task => renderTask(task)))
+    // }
+
+    Task.allTasks()
 
     // render a single task
     function renderTask(jsonObj){
@@ -113,10 +100,12 @@ mainPage.append(employeeDiv)
     div.appendChild(urgency)
     div.appendChild(deleteTask)
     taskDiv.appendChild(div)
+    console.log(jsonObj)
+    // how to get the employee name to show up here as well?
     }
 
 
 
-renderAllEmployees()
-addEmployee() 
-renderAllTasks()
+// renderAllEmployees()
+// addEmployee() 
+// renderAllTasks()
