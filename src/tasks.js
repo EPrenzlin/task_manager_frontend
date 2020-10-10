@@ -1,4 +1,3 @@
-console.log("from the tasks js")
 const taskLink = "http://localhost:3000/tasks"
 
 class Task{
@@ -60,4 +59,10 @@ class Task{
                 addTask.appendChild(description)
                 addTask.append(createTask)
                 }
+
+        static getName(json){
+            let name = json.name
+            return name
+        }
+
     }

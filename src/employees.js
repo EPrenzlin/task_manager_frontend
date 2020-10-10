@@ -23,7 +23,6 @@ static addEmployee(){
         }
 
         deleteEmployee(button, div, jsonObject){
-        console.log("I am being pressed")
         button.addEventListener("click", (e) => {
         e.preventDefault()
         div.remove()

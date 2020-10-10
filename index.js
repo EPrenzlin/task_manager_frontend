@@ -1,6 +1,7 @@
 // new api service 
 const api = new ApiService 
 const emp = new Employee
+const task = new Task
 // various constants
 const mainPage = document.querySelector("h2"); 
 const makeEmployee = document.getElementById("new-employee-form"); 
@@ -80,6 +81,13 @@ Task.allTasks()
 
     // render a single task
     function renderTask(jsonObj){
+    let name = document.createElement("p") 
+    
+    const returnName = api.employeeName(jsonObj)
+    .then(json => name.innerText = json.name)
+    console.log(name)
+    
+
     const div = document.createElement("div") 
     div.setAttribute("task-class", jsonObj.id )
     const description = document.createElement("p")
@@ -93,7 +101,6 @@ Task.allTasks()
     deleteTask.addEventListener("click", (e) => {
         e.preventDefault()
         div.remove() 
-
         api.deleteTask(jsonObj)
         .then(obj => console.log(obj))
     })
@@ -102,9 +109,11 @@ Task.allTasks()
     description.innerHTML = jsonObj.description
     div.appendChild(description)
     div.appendChild(urgency)
+    div.appendChild(name)
     div.appendChild(deleteTask)
     taskDiv.appendChild(div)
-    console.log(jsonObj)
+
+    // console.log(jsonObj)
     // how to get the employee name to show up here as well?
     }
 

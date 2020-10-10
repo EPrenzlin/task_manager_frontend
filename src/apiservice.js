@@ -1,13 +1,5 @@
 class ApiService {
 
-    // constructor(arg){
-    //     this.cheese = arg
-    // }
-
-    hello(){
-        console.log("hello from API")
-    }
-
     allEmployees(){
         return fetch(employeeLink)
         .then (response => response.json())
@@ -34,8 +26,13 @@ class ApiService {
         return fetch(`${employeeLink}/${jsonObject.id}`,{
         method:"DELETE"
         })
-        .then(response => response.json())   
+        // .then(response => response.json())   
     }
+
+    employeeName(jsonObject){
+        return fetch(`http://localhost:3000/tasks/${jsonObject.id}`)
+        .then(response => response.json())
+        }
 
     addTask(urgency, description,jsonObject){
         return fetch(taskLink,{
