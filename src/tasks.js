@@ -37,4 +37,27 @@ class Task{
             taskDiv.appendChild(div)
             }
 
+            static addTask(){
+                let addTask = document.createElement("form")
+                let createTask = document.createElement("button")
+                createTask.setAttribute("class", "newTask")
+                createTask.innerHTML = "Assign a new Task"
+                let urgency = document.createElement("input")
+                urgency.setAttribute("type", "textarea") 
+                urgency.setAttribute("placeholder", "Urgency")
+                addTask.appendChild(urgency)
+                
+                createTask.addEventListener("click", (e) => {
+                    e.preventDefault()
+                    api.addTask(urgency,description,jsonObject)
+                    .then (obj => renderTask(obj))
+                    })
+            
+                let description = document.createElement("input")
+                description.setAttribute("type", "text") 
+                description.setAttribute("placeholder", "Description")
+            
+                addTask.appendChild(description)
+                addTask.append(createTask)
+                }
     }

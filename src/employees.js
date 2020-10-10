@@ -1,4 +1,3 @@
-console.log("From employees js")
 const employeeLink = "http://localhost:3000/employees"
 
 
@@ -21,7 +20,18 @@ static addEmployee(){
         api.addEmployee(title, name, experience, expertise) 
         .then (json => renderEmployee(json))
         })
-}
+        }
+
+        deleteEmployee(button, div, jsonObject){
+        console.log("I am being pressed")
+        button.addEventListener("click", (e) => {
+        e.preventDefault()
+        div.remove()
+        api.deleteEmployee(jsonObject)
+        .then(json => console.log(json))
+        })
+        }
+
 
 }
 

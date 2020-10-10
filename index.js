@@ -1,9 +1,11 @@
 // new api service 
 const api = new ApiService 
+const emp = new Employee
 // various constants
-const mainPage = document.querySelector("h2") 
-const makeEmployee = document.getElementById("new-employee-form")
+const mainPage = document.querySelector("h2"); 
+const makeEmployee = document.getElementById("new-employee-form"); 
 const submitButton = makeEmployee.querySelector('[type=Submit]');
+
 const taskDiv = document.createElement("div")
 mainPage.appendChild(taskDiv)
 
@@ -13,6 +15,7 @@ mainPage.append(employeeDiv)
 
 Employee.allEmployees()
 Employee.addEmployee()
+Task.allTasks()
 
 
     // render a single employee
@@ -20,19 +23,31 @@ Employee.addEmployee()
         const div = document.createElement("div")
         div.setAttribute("employee", "employee")
         const button = document.createElement("button")
+        button.setAttribute("delete-button",jsonObject.id)
         button.innerHTML = "Remove from Team"
-        
-        const h3 = document.createElement("h3")
-        h3.innerHTML  = jsonObject.title
+
         div.setAttribute("class", "employee")
         div.setAttribute("data-set", jsonObject.id)
+        
+        const employeeTitle = document.createElement("H3")
+        employeeTitle.innerHTML  = jsonObject.title
 
-        button.addEventListener("click", (e) => {
-            e.preventDefault()
-            div.remove()
-            api.deleteEmployee(jsonObject)
-            .then(json => console.log(json))
-            })
+        const employeeName = document.createElement("H2")
+        employeeName.innerHTML = jsonObject.name
+
+        const employeeExperience = document.createElement("p")
+        employeeExperience.innerHTML = jsonObject.experience 
+
+        const employeeExpertise = document.createElement("p") 
+        employeeExpertise.innerHTML = jsonObject.expertise
+        
+        div.append(employeeName)
+        div.append(employeeTitle)
+        div.append(employeeExperience)
+        div.append(employeeExpertise)
+
+        emp.deleteEmployee(button, div,jsonObject)  
+
     // ADDS A TASK
         let addTask = document.createElement("form")
         let createTask = document.createElement("button")
@@ -56,23 +71,12 @@ Employee.addEmployee()
     addTask.appendChild(description)
     addTask.append(createTask)
     
-    let newEmployee = document.createElement("p")
-    newEmployee.innerHTML = jsonObject.name
-    
-    div.append(h3) 
     div.append(button)
     div.append(addTask)
-    console.log(div)
     employeeDiv.appendChild(div)    
     }
 
-    // render all tasks
-    // function renderAllTasks(){
-    // api.allTasks()
-    //     .then(obj => obj.forEach(task => renderTask(task)))
-    // }
 
-    Task.allTasks()
 
     // render a single task
     function renderTask(jsonObj){
@@ -104,8 +108,3 @@ Employee.addEmployee()
     // how to get the employee name to show up here as well?
     }
 
-
-
-// renderAllEmployees()
-// addEmployee() 
-// renderAllTasks()
