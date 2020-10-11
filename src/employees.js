@@ -62,8 +62,7 @@ static addEmployee(){
 
         emp.deleteEmployee(button, div,jsonObject)  
     
-        Task.addTask()
-        // no linkage between the add task and the appension onto the Employee render page. 
+        Task.addTask(div,jsonObject)
 
         employeeDiv.appendChild(div)    
     }

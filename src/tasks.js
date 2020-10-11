@@ -9,7 +9,7 @@ class Task{
             }
 
 
-        static addTask(){
+        static addTask(div,jsonObject){
                 let addTask = document.createElement("form")
                 let createTask = document.createElement("button")
                 createTask.setAttribute("class", "newTask")
@@ -31,6 +31,7 @@ class Task{
             
                 addTask.appendChild(description)
                 addTask.append(createTask)
+                div.append(addTask)
                 }
 
                 
