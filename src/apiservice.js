@@ -56,8 +56,8 @@ class ApiService {
 
     deleteTask(jsonObj){
         return fetch(`${taskLink}/${jsonObj.id}`,{
-            method: "DELETE",
+            method: "DELETE"
         })
-        .then(response => response.json())
+        // .then(response => response.json())
     }
 }
