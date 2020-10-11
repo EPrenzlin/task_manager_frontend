@@ -22,7 +22,7 @@ class Task{
                 createTask.addEventListener("click", (e) => {
                     e.preventDefault()
                     api.addTask(urgency,description,jsonObject)
-                    .then (obj => renderTask(obj))
+                    .then (obj => Task.singleTask(obj))
                     })
             
                 let description = document.createElement("input")

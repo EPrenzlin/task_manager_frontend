@@ -18,64 +18,66 @@ Employee.allEmployees()
 Employee.addEmployee()
 Task.allTasks()
 
+// Employee.renderEmployee()
+
 
     // render a single employee
-    function renderEmployee(jsonObject){
-        const div = document.createElement("div")
-        div.setAttribute("employee", "employee")
-        const button = document.createElement("button")
-        button.setAttribute("delete-button",jsonObject.id)
-        button.innerHTML = "Remove from Team"
+    // function renderEmployee(jsonObject){
+    //     const div = document.createElement("div")
+    //     div.setAttribute("employee", jsonObject.id)
+    //     const button = document.createElement("button")
+    //     button.setAttribute("delete-button",jsonObject.id)
+    //     button.innerHTML = "Remove from Team"
 
-        div.setAttribute("class", "employee")
-        div.setAttribute("data-set", jsonObject.id)
+    //     div.setAttribute("class", "employee")
+    //     div.setAttribute("data-set", jsonObject.id)
         
-        const employeeTitle = document.createElement("H3")
-        employeeTitle.innerHTML  = jsonObject.title
+    //     const employeeTitle = document.createElement("H3")
+    //     employeeTitle.innerHTML  = jsonObject.title
 
-        const employeeName = document.createElement("H2")
-        employeeName.innerHTML = jsonObject.name
+    //     const employeeName = document.createElement("H2")
+    //     employeeName.innerHTML = jsonObject.name
 
-        const employeeExperience = document.createElement("p")
-        employeeExperience.innerHTML = jsonObject.experience 
+    //     const employeeExperience = document.createElement("p")
+    //     employeeExperience.innerHTML = jsonObject.experience 
 
-        const employeeExpertise = document.createElement("p") 
-        employeeExpertise.innerHTML = jsonObject.expertise
+    //     const employeeExpertise = document.createElement("p") 
+    //     employeeExpertise.innerHTML = jsonObject.expertise
         
-        div.append(employeeName)
-        div.append(employeeTitle)
-        div.append(employeeExperience)
-        div.append(employeeExpertise)
+    //     div.append(employeeName)
+    //     div.append(employeeTitle)
+    //     div.append(employeeExperience)
+    //     div.append(employeeExpertise)
 
-        emp.deleteEmployee(button, div,jsonObject)  
+    //     emp.deleteEmployee(button, div,jsonObject)  
 
     // ADDS A TASK
-        let addTask = document.createElement("form")
-        let createTask = document.createElement("button")
-        createTask.setAttribute("class", "newTask")
-        createTask.innerHTML = "Assign a new Task"
-        let urgency = document.createElement("input")
-        urgency.setAttribute("type", "textarea") 
-        urgency.setAttribute("placeholder", "Urgency")
-        addTask.appendChild(urgency)
+        // let addTask = document.createElement("form")
+        // let createTask = document.createElement("button")
+        // createTask.setAttribute("class", "newTask")
+        // createTask.innerHTML = "Assign a new Task"
+        // let urgency = document.createElement("input")
+        // urgency.setAttribute("type", "textarea") 
+        // urgency.setAttribute("placeholder", "Urgency")
+        // addTask.appendChild(urgency)
         
-        createTask.addEventListener("click", (e) => {
-            e.preventDefault()
-            api.addTask(urgency,description,jsonObject)
-            .then (obj => Task.singleTask(obj))
-            })
+        // createTask.addEventListener("click", (e) => {
+        //     e.preventDefault()
+        //     api.addTask(urgency,description,jsonObject)
+        //     .then (obj => Task.singleTask(obj))
+        //     })
     
-    let description = document.createElement("input")
-    description.setAttribute("type", "text") 
-    description.setAttribute("placeholder", "Description")
+        //  let description = document.createElement("input")
+        // description.setAttribute("type", "text") 
+        // description.setAttribute("placeholder", "Description")
     
-    addTask.appendChild(description)
-    addTask.append(createTask)
+        // addTask.appendChild(description)
+        // addTask.append(createTask)
     
-    div.append(button)
-    div.append(addTask)
+        // div.append(button)
+        // div.append(addTask)
     
-    employeeDiv.appendChild(div)    
-    }
+        // employeeDiv.appendChild(div)    
+    // }
 
 
