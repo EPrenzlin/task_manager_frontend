@@ -2,7 +2,6 @@ const taskLink = "http://localhost:3000/tasks"
 
 class Task{
     
-    
     static allTasks(){
             api.allTasks()
                 .then(obj => obj.forEach(task => Task.singleTask(task)))
@@ -11,6 +10,7 @@ class Task{
 
         static addTask(div,jsonObject){
                 let addTask = document.createElement("form")
+                addTask.setAttribute("taskForm", jsonObject.id)
                 let createTask = document.createElement("button")
                 createTask.setAttribute("class", "newTask")
                 createTask.innerHTML = "Assign a new Task"
@@ -38,15 +38,16 @@ class Task{
                 
         static singleTask(jsonObj){
                 let name = document.createElement("p") 
+                name.innerText = "Unassigned"
                 const returnName = api.employeeName(jsonObj)
-                .then(json => name.innerText = json.name)                
+                .then(json => name.innerText = `Assigned to: ${json.name}`) 
             
                 const div = document.createElement("div") 
-                div.setAttribute("task-class", jsonObj.id )
+                div.setAttribute("class", "task-div")
                 const description = document.createElement("p")
-                description.innerHTML = jsonObj.description
+                description.innerHTML = (`Description: ${jsonObj.description}`)
                 const urgency = document.createElement("p")
-                urgency.innerHTML = jsonObj.urgency
+                urgency.innerHTML = (`Urgency: ${jsonObj.urgency}`)
             
                 const deleteTask = document.createElement("button") 
                 deleteTask.innerHTML = "Completed Task" 
@@ -57,12 +58,22 @@ class Task{
                     api.deleteTask(jsonObj)
                     .then(obj => console.log(obj))
                 })
-                urgency.innerHTML = jsonObj.urgency
-                description.innerHTML = jsonObj.description
+
+
                 div.appendChild(description)
                 div.appendChild(urgency)
                 div.appendChild(name)
                 div.appendChild(deleteTask)
                 taskDiv.appendChild(div)
             }
+
+            nameProblem(name,json){
+                if(!json.name == null){
+                return name.innerText = json.name
+                }
+                else if (!json.name){
+                console.log("INSIDE THE ELSE")
+                name.innerText = "UNASSIGNED"
+                }}
+
     }

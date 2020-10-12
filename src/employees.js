@@ -34,7 +34,7 @@ static addEmployee(){
 
     static renderEmployee(jsonObject){
         const div = document.createElement("div")
-        div.setAttribute("employee", jsonObject.id)
+        div.innerHTMl  = "TESTING"
         const button = document.createElement("button")
         button.setAttribute("delete-button",jsonObject.id)
         button.innerHTML = "Remove from Team"
@@ -42,23 +42,23 @@ static addEmployee(){
         div.setAttribute("class", "employee")
         div.setAttribute("data-set", jsonObject.id)
         
-        const employeeTitle = document.createElement("H3")
-        employeeTitle.innerHTML  = jsonObject.title
+        const employeeTitle = document.createElement("p")
+        employeeTitle.innerHTML  = (`Title: ${jsonObject.title}`)
 
         const employeeName = document.createElement("H2")
         employeeName.innerHTML = jsonObject.name
 
         const employeeExperience = document.createElement("p")
-        employeeExperience.innerHTML = jsonObject.experience 
+        employeeExperience.innerHTML = (`Experience: ${jsonObject.experience}`) 
 
         const employeeExpertise = document.createElement("p") 
-        employeeExpertise.innerHTML = jsonObject.expertise
+        employeeExpertise.innerHTML = (`Expertise: ${jsonObject.expertise}`)
         
-        div.append(employeeName)
-        div.append(employeeTitle)
-        div.append(employeeExperience)
-        div.append(employeeExpertise)
-        div.append(button)
+        div.appendChild(employeeName)
+        div.appendChild(employeeTitle)
+        div.appendChild(employeeExperience)
+        div.appendChild(employeeExpertise)
+        div.appendChild(button)
 
         emp.deleteEmployee(button, div,jsonObject)  
     

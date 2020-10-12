@@ -1,5 +1,29 @@
 h1{text-align: center;}
 h2{text-align: left;}
-form{text-align: left;}
-.employee{text-align:left;}
-.form{text-align:center;}
+h3{text-align: center;}
+
+/* .employee{
+text-align:left;
+} */
+
+
+.employee-form{
+            position: fixed;
+            top: 0px; 
+            right: 5px;
+            }
+
+.task-div{
+    /* display: grid; */
+    /* grid-template-columns: 1fr; */
+    /* grid-template-rows: auto; */
+    text-align:center;
+}
+
+.all-employees{
+    position: absolute;
+    top :0px ;
+    left: 50px;
+}
+
+/* do an assigned at function for the tasks */

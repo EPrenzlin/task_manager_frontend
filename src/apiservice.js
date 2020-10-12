@@ -20,7 +20,11 @@ class ApiService {
             })
             }) 
             .then(response => response.json()
-            )}
+            )
+            .catch(error => { 
+                console.log(error)
+            })
+        }
 
     deleteEmployee(jsonObject){
         return fetch(`${employeeLink}/${jsonObject.id}`,{
@@ -58,6 +62,10 @@ class ApiService {
         return fetch(`${taskLink}/${jsonObj.id}`,{
             method: "DELETE"
         })
-        // .then(response => response.json())
+        }
+
+    sortCreation(jsonObj){
+        return fetch(`http://localhost:3000/filter`)
+        .then(response => response.json())
     }
 }
