@@ -37,10 +37,11 @@ class Task{
                 
                 
         static singleTask(jsonObj){
+
                 let name = document.createElement("p") 
                 name.innerText = "Unassigned"
                 const returnName = api.employeeName(jsonObj)
-                .then(json => name.innerText = `Assigned to: ${json.name}`) 
+                            .then(json => name.innerText = `Assigned to: ${json.name}`) 
             
                 const div = document.createElement("div") 
                 div.setAttribute("class", "task-div")
@@ -51,29 +52,34 @@ class Task{
             
                 const deleteTask = document.createElement("button") 
                 deleteTask.innerHTML = "Completed Task" 
-            
-                deleteTask.addEventListener("click", (e) => {
-                    e.preventDefault()
-                    div.remove() 
-                    api.deleteTask(jsonObj)
-                    .then(obj => console.log(obj))
-                })
-
+                
+                task.delete(deleteTask,div, jsonObj)
+                task.changeName(name)
 
                 div.appendChild(description)
                 div.appendChild(urgency)
                 div.appendChild(name)
                 div.appendChild(deleteTask)
                 taskDiv.appendChild(div)
+
             }
 
-            nameProblem(name,json){
-                if(!json.name == null){
-                return name.innerText = json.name
-                }
-                else if (!json.name){
-                console.log("INSIDE THE ELSE")
-                name.innerText = "UNASSIGNED"
-                }}
+
+            delete(deleteTask,div, jsonObj){
+                deleteTask.addEventListener("click", (e) => {
+                e.preventDefault()
+                div.remove() 
+                api.deleteTask(jsonObj)
+                .then(obj => console.log(obj))
+            })}
+
+            changeName(name){
+                // add event listener to when the employee gets deleted, and change the name accordingly 
+                const deletedName = document.querySelectorAll(".delete") 
+                deletedName.forEach(deletedName => deletedName.addEventListener("click", (e) => {
+                        console.log("from the task deleting button")
+                        name.innerText = "Unassigned"
+                        }))
+            }
 
     }

@@ -1,6 +1,7 @@
 h1{text-align: center;}
 h2{text-align: left;}
 h3{text-align: center;}
+main{background-color: #FAF8F4;}
 
 /* .employee{
 text-align:left;
@@ -26,4 +27,8 @@ text-align:left;
     left: 50px;
 }
 
-/* do an assigned at function for the tasks */
+.taskcounter{
+    position:absolute;
+    top: 100px;
+    right:400px;
+}

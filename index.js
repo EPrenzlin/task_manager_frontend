@@ -14,12 +14,11 @@ mainPage.appendChild(taskDiv)
 const employeeDiv = document.createElement("div")
 employeeDiv.setAttribute("class", "all-employees")
 mainPage.append(employeeDiv) 
-    
+
 
 Employee.allEmployees()
 Employee.addEmployee()
 Task.allTasks()
-
 
 
 // can do a sort/  filter function here?

@@ -59,13 +59,14 @@ class ApiService {
     }
 
     deleteTask(jsonObj){
+        console.log("is this working?")
         return fetch(`${taskLink}/${jsonObj.id}`,{
             method: "DELETE"
         })
         }
 
-    sortCreation(jsonObj){
-        return fetch(`http://localhost:3000/filter`)
-        .then(response => response.json())
+
+    employeeTaskTracker(){
+        return fetch(`${employeeLink}`)
     }
 }

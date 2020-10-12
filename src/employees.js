@@ -27,6 +27,7 @@ static addEmployee(){
         console.log("from deleting employee")
         e.preventDefault()
         div.remove()
+        
         api.deleteEmployee(jsonObject)
         .then(json => console.log(json))
         })
@@ -37,6 +38,7 @@ static addEmployee(){
         div.innerHTMl  = "TESTING"
         const button = document.createElement("button")
         button.setAttribute("delete-button",jsonObject.id)
+        button.setAttribute("class", "delete")
         button.innerHTML = "Remove from Team"
 
         div.setAttribute("class", "employee")
@@ -66,6 +68,28 @@ static addEmployee(){
 
         employeeDiv.appendChild(div)    
     }
+
+    // taskTracker(){
+    // api.employeeTaskTracker()
+    // .then(response => response.json())
+    // .then(json => json.forEach(json => Employee.displayTask(json)))
+    // }
+
+    // static displayTask(jsonObject){
+    // return fetch(`http://localhost:3000/showtasks/${jsonObject.id}`)
+    // .then(response => response.json())
+    // .then(json => emp.renderTask(json))
+    // }
+
+    // renderTask(jsonObj){
+    // const taskName = document.createElement("p")
+    // taskName.innerHTML = (`Name: ${jsonObj.name}`)
+    
+    // const taskCount = document.createElement("p")
+    // taskCount.innerHTML = (`Outstanding items: ${jsonObj.tasks}`)
+    // taskCounter.append(taskName)
+    // taskCounter.append(taskCount)
+    // }
 
 }
 
