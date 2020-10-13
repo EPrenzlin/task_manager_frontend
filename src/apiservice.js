@@ -39,14 +39,19 @@ class ApiService {
         }
 
     addTask(urgency, description,jsonObject){
+        let urgencyValue = urgency.value
+        let descriptionValue = description.value
+        urgency.value = ""
+        description.value = ""
+        debugger
         return fetch(taskLink,{
             method:"POST",
             headers:{
                 'Content-Type' : 'application/json',
             }, 
             body: JSON.stringify({
-                urgency: urgency.value,
-                description: description.value,
+                urgency: urgencyValue,
+                description: descriptionValue,
                 employee_id: jsonObject.id
                    })
             })
