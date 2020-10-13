@@ -16,10 +16,22 @@ static addEmployee(){
         let name = e.target.name.value
         let experience = e.target.experience.value
         let expertise = e.target.expertise.value
+        
+        let titleValue = title
+        let nameValue = name
+        let experienceValue = experience
+        let expertiseValue = expertise
 
-        api.addEmployee(title, name, experience, expertise) 
+        makeEmployee.reset()
+    
+        // change the above values into something like this: 
+        // let titleValue = title.value
+        // then we can change the titl.value into a "" once the button is pressed - put this on line 26. 
+        api.addEmployee(titleValue, nameValue, experienceValue, expertiseValue) 
         .then (json => Employee.renderEmployee(json))
         })
+        // add in the "clear form"
+
         }
 
      deleteEmployee(button, div, jsonObject){
@@ -69,27 +81,6 @@ static addEmployee(){
         employeeDiv.appendChild(div)    
     }
 
-    // taskTracker(){
-    // api.employeeTaskTracker()
-    // .then(response => response.json())
-    // .then(json => json.forEach(json => Employee.displayTask(json)))
-    // }
-
-    // static displayTask(jsonObject){
-    // return fetch(`http://localhost:3000/showtasks/${jsonObject.id}`)
-    // .then(response => response.json())
-    // .then(json => emp.renderTask(json))
-    // }
-
-    // renderTask(jsonObj){
-    // const taskName = document.createElement("p")
-    // taskName.innerHTML = (`Name: ${jsonObj.name}`)
-    
-    // const taskCount = document.createElement("p")
-    // taskCount.innerHTML = (`Outstanding items: ${jsonObj.tasks}`)
-    // taskCounter.append(taskName)
-    // taskCounter.append(taskCount)
-    // }
 
 }
 

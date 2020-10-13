@@ -74,7 +74,6 @@ class Task{
             })}
 
             changeName(name){
-                // add event listener to when the employee gets deleted, and change the name accordingly 
                 const deletedName = document.querySelectorAll(".delete") 
                 deletedName.forEach(deletedName => deletedName.addEventListener("click", (e) => {
                         console.log("from the task deleting button")

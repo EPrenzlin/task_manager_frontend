@@ -30,7 +30,6 @@ class ApiService {
         return fetch(`${employeeLink}/${jsonObject.id}`,{
         method:"DELETE"
         })
-        // .then(response => response.json())   
     }
 
     employeeName(jsonObject){
