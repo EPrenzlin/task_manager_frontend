@@ -24,13 +24,9 @@ static addEmployee(){
 
         makeEmployee.reset()
     
-        // change the above values into something like this: 
-        // let titleValue = title.value
-        // then we can change the titl.value into a "" once the button is pressed - put this on line 26. 
         api.addEmployee(titleValue, nameValue, experienceValue, expertiseValue) 
         .then (json => Employee.renderEmployee(json))
         })
-        // add in the "clear form"
 
         }
 

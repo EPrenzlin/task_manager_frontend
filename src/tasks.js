@@ -39,9 +39,9 @@ class Task{
         static singleTask(jsonObj){
 
                 let name = document.createElement("p") 
-                // name.innerText = "Unassigned"
+                name.innerText = "Unassigned"
                 const returnName = api.employeeName(jsonObj)
-                            .then(json => name.innerText = `Assigned to: ${json.name}`) 
+                .then(json => name.innerText = `Assigned to: ${json.name}`) 
             
                 const div = document.createElement("div") 
                 div.setAttribute("class", "task-div")
