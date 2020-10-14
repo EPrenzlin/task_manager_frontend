@@ -1,4 +1,4 @@
-# task_manager_frontend
+# Leo McGarry task Manager
 
 This application was created for the ficticous Leo McGarry, the White House Chief of Staff from the TV series "The West Wing". It was created for the purpose of being able to keep track of the tasks that Leo has assigned to his staff ( this is fully interchangeable for other purposes, such as keeping track of chores in a shared flat, or more broadly as a manager keeping track of the employees tasks). 
 
