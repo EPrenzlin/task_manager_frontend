@@ -1,11 +1,7 @@
 h1{text-align: center;}
 h2{text-align: left;}
-h3{text-align: center;}
+h3{text-align: left;}
 main{background-color: #FAF8F4;}
-
-/* .employee{
-text-align:left;
-} */
 
 
 .employee-form{
@@ -14,7 +10,7 @@ text-align:left;
             right: 5px;
             }
 
-.task-div{
+.task-div.employee{
     /* display: grid; */
     /* grid-template-columns: 1fr; */
     /* grid-template-rows: auto; */
@@ -23,8 +19,8 @@ text-align:left;
 
 .all-employees{
     position: absolute;
-    top :0px ;
-    left: 50px;
+    top :100px ;
+    left: 500px;
 }
 
 .taskcounter{

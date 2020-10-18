@@ -30,27 +30,25 @@ static addEmployee(){
 
         }
 
-     deleteEmployee(button, div, jsonObject){
-        button.addEventListener("click", (e) => {
-        console.log("from deleting employee")
+     deleteEmployee(deleteButton, div,jsonObject){
+        // Task.deleteAll(deleteButton,jsonObject,div)
+        deleteButton.addEventListener("click", (e) => {
         e.preventDefault()
-        div.remove()
-        
+        div.remove()    
         api.deleteEmployee(jsonObject)
-        .then(json => console.log(json))
+        .then(response => console.log(response))
         })
         }
 
     static renderEmployee(jsonObject){
         const div = document.createElement("div")
-        div.innerHTMl  = "TESTING"
-        const button = document.createElement("button")
-        button.setAttribute("delete-button",jsonObject.id)
-        button.setAttribute("class", "delete")
-        button.innerHTML = "Remove from Team"
+        const deleteButton = document.createElement("button")
+        deleteButton.setAttribute("delete-button",jsonObject.id)
+        deleteButton.setAttribute("class", "delete")
+        deleteButton.innerHTML = " Request them leave the Team"
 
         div.setAttribute("class", "employee")
-        div.setAttribute("data-set", jsonObject.id)
+        div.setAttribute("id", jsonObject.id)
         
         const employeeTitle = document.createElement("p")
         employeeTitle.innerHTML  = (`Title: ${jsonObject.title}`)
@@ -68,12 +66,11 @@ static addEmployee(){
         div.appendChild(employeeTitle)
         div.appendChild(employeeExperience)
         div.appendChild(employeeExpertise)
-        div.appendChild(button)
+        div.appendChild(deleteButton)
 
-        emp.deleteEmployee(button, div,jsonObject)  
-    
-        Task.addTask(div,jsonObject)
+        emp.deleteEmployee(deleteButton, div,jsonObject)
 
+        Task.addTask(deleteButton,div,jsonObject)
         employeeDiv.appendChild(div)    
     }
 

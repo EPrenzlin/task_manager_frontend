@@ -34,15 +34,14 @@ class ApiService {
 
     employeeName(jsonObject){
         return fetch(`http://localhost:3000/tasks/${jsonObject.id}`)
-        .then(response => response.json())
         }
+
 
     addTask(urgency, description,jsonObject){
         let urgencyValue = urgency.value
         let descriptionValue = description.value
         urgency.value = ""
         description.value = ""
-        debugger
         return fetch(taskLink,{
             method:"POST",
             headers:{
@@ -62,15 +61,26 @@ class ApiService {
         .then(response => response.json())
     }
 
-    deleteTask(jsonObj){
-        console.log("is this working?")
-        return fetch(`${taskLink}/${jsonObj.id}`,{
-            method: "DELETE"
+    deleteTask(id){
+        return fetch(`${taskLink}/${id}`,{
+            method: "DELETE",
+            headers:{
+                'Content-type': 'application/json' 
+               },
         })
+        .then (response => console.log(response))
         }
 
 
-    employeeTaskTracker(){
-        return fetch(`${employeeLink}`)
+
+
+    showTask(jsonObject){
+        return fetch(`http://localhost:3000/show_task/${jsonObject.id}`)
+        .then(response => response.json())
     }
+
+
+
+
+
 }
