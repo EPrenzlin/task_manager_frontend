@@ -6,7 +6,7 @@ class ApiService {
     }
 
 
-    addEmployee(title, name, experience, expertise){
+     addEmployee(title, name, experience, expertise){
         return fetch("http://localhost:3000/employees",{
             method: "POST", 
             headers: {
@@ -19,22 +19,19 @@ class ApiService {
                 expertise: expertise
             })
             }) 
-            .then(response => response.json()
-            )
-            .catch(error => { 
-                console.log(error)
-            })
-        }
+            .then(response => response.json())
+            };
 
-    deleteEmployee(jsonObject){
+     deleteEmployee(jsonObject){
         return fetch(`${employeeLink}/${jsonObject.id}`,{
         method:"DELETE"
         })
     }
 
-    employeeName(jsonObject){
+     employeeName(jsonObject){
         return fetch(`http://localhost:3000/tasks/${jsonObject.id}`)
-        }
+        .then(response => response.json())
+    }
 
 
     addTask(urgency, description,jsonObject){
@@ -69,7 +66,7 @@ class ApiService {
                },
         })
         .then (response => console.log(response))
-        }
+    }
 
 
 

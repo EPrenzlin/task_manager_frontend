@@ -1,46 +1,41 @@
 const taskLink = "http://localhost:3000/tasks"
 
-class Task{
-    
-    static allTasks(){
-            api.allTasks()
-                .then(obj => obj.forEach(task => Task.renderTask(task)))
-            }
-
-
-        static addTask(deleteButton,div,jsonObject){
+class Task {
+    constructor(taskObj) {
+        this.urgency = taskObj.urgency;
+        this.description = taskObj.description;
+        this.renderTask(taskObj)
+      }
+      
+    static addTask(div,jsonObject){
                 let addTask = document.createElement("form")
                 addTask.setAttribute("taskForm", jsonObject.id)
                 let createTask = document.createElement("button")
-                createTask.setAttribute("class", "newTask")
+                createTask.setAttribute("class", `${jsonObject.id}`)
                 createTask.innerHTML = "Assign a new Task"
+                
                 let urgency = document.createElement("input")
                 urgency.setAttribute("type", "textarea") 
                 urgency.setAttribute("placeholder", "Urgency")
-                addTask.appendChild(urgency)
-                                
-                createTask.addEventListener("click", (e) => {
-                    e.preventDefault()
-                    api.addTask(urgency,description,jsonObject)
-                    .then (obj => Task.renderTask(obj))
-                    })
-            
+                
                 let description = document.createElement("input")
                 description.setAttribute("type", "text") 
                 description.setAttribute("placeholder", "Description")
-            
+                                
+                createTask.addEventListener("click", (e) => {
+                    e.preventDefault()
+                    console.log(e.target)
+                    api.addTask(urgency,description,jsonObject)
+                    .then (obj => new Task(obj))
+                    })
+
+                addTask.appendChild(urgency)
                 addTask.appendChild(description)
                 addTask.append(createTask)
                 div.append(addTask)
                 }
 
-        static renderTask(jsonObj){
-                let name = document.createElement("p")                                 
-                
-                api.employeeName(jsonObj)
-                .then(response => response.json())
-                .then(json => name.innerText = `Assigned to: ${json.name}`) 
-
+    renderTask(jsonObj){
                 const div = document.createElement("div") 
                 div.setAttribute("class", `${jsonObj.employee_id}`)
                 div.setAttribute("id", `${jsonObj.id}`)
@@ -53,28 +48,21 @@ class Task{
                 deleteTask.innerHTML = "Completed Task" 
                 deleteTask.setAttribute("class",`delete ${jsonObj.id}`)
                 
-                
-                Task.delete(deleteTask,div, jsonObj)
+                this.delete(deleteTask,div, jsonObj)
 
                 div.appendChild(description)
                 div.appendChild(urgency)
-                div.appendChild(name)
                 div.appendChild(deleteTask)
                 taskDiv.appendChild(div)
             }
 
-
-        static delete(deleteTask,div, jsonObj){
+             delete(deleteTask,div, jsonObj){
                 deleteTask.addEventListener("click", (e) => {
                 e.preventDefault()
-                console.log(div) 
                 div.remove() 
                 api.deleteTask(jsonObj.id)
                 .then(obj => console.log(obj))
             })}
-
-        
-
 
         
     }
